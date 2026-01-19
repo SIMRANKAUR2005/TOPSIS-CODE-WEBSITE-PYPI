@@ -1,119 +1,90 @@
-# TOPSIS Web Service
+# TOPSIS – CLI, Package & Web Service
 
-A complete end-to-end implementation of the **TOPSIS (Technique for Order Preference by Similarity to Ideal Solution)** method, built as:
+This project implements the **TOPSIS (Technique for Order Preference by Similarity to Ideal Solution)** method as:
+- A Command Line Tool  
+- A Python Package (PyPI)  
+- A Web Service with file upload and email delivery  
 
-• A command-line tool  
-• A Python package uploaded to PyPI  
-• A web service with file upload and email delivery  
-
-This project covers all three parts of the assignment.
+It helps rank multiple alternatives based on multiple criteria using mathematical decision-making.
 
 ---
 
 ## What is TOPSIS?
 
-TOPSIS is a multi-criteria decision-making technique that:
-- Evaluates multiple alternatives
-- Uses multiple criteria with weights and impacts
-- Ranks options based on closeness to the ideal solution
+TOPSIS selects the best option which is:
+- Closest to the ideal best solution  
+- Farthest from the ideal worst solution  
+
+Used in finance, management, engineering, and ranking problems.
 
 ---
 
-## Project Features
+## Methodology (Short)
 
-### Part-I: CLI Implementation
-- Command-line program for TOPSIS
-- Input via CSV or Excel
-- Validates:
-  - Correct number of arguments
-  - Numeric criteria
-  - Weights and impacts count
-  - Valid impacts (+ or -)
-- Outputs TOPSIS score and rank
+1. Take input data (1st column = alternatives, rest = criteria)  
+2. Normalize each criterion column  
+3. Multiply by weights  
+4. Find ideal best and ideal worst  
+5. Compute distance from both  
+6. Calculate TOPSIS score  
+7. Rank alternatives  
 
-### Part-II: PyPI Package
-- Packaged as a Python module
-- Installable via pip
-- Runnable from command line
-- Includes full user manual
-
-### Part-III: Web Service
-- File upload via browser
-- Weights and impacts input
-- Email validation
-- Sends result file through email
-- Flask backend + HTML frontend
+Higher score = better rank.
 
 ---
 
-## Technologies Used
+## Example Dataset
 
-- Python  
-- Flask  
-- Pandas & NumPy  
-- SMTP for Email  
-- HTML  
-- GitHub  
-- PyPI  
+| Fund | P1 | P2 | P3 | P4 | P5 |
+|------|----|----|----|----|----|
+| M1 | 0.84 | 0.71 | 6.7 | 42.1 | 12.59 |
+| M2 | 0.91 | 0.83 | 7.0 | 31.7 | 10.11 |
+| ... | ... | ... | ... | ... | ... |
 
 ---
 
+## Example Result (From Output File)
 
-## How to Run Web Service
+| Fund | Topsis Score | Rank |
+|------|--------------|------|
+| M5 | 0.972128 | 1 |
+| M8 | 0.560092 | 2 |
+| M6 | 0.547048 | 3 |
+| M3 | 0.496361 | 4 |
+| M7 | 0.395015 | 5 |
+| M1 | 0.382109 | 6 |
+| M2 | 0.366492 | 7 |
+| M4 | 0.324792 | 8 |
 
-### 1. Install Dependencies
-
-pip install flask pandas numpy openpyxl
-
-### 2. Run Server
-
-python app.py
-
-### 3. Open Browser
-
-http://127.0.0.1:5000/
-
----
-
-## Web Form Inputs
-
-- Upload CSV or Excel file  
-- Enter weights (comma separated)  
-- Enter impacts (comma separated + or -)  
-- Enter valid email  
-- Submit  
-
-Result will be sent as an email attachment.
+**Best Option = M5 (Rank 1)**
 
 ---
 
-## Validations Implemented
+## Result Graph Idea
 
-- Email format check  
-- Weights and impacts count must match  
-- Impacts must be + or -  
-- Comma separated inputs  
-- Minimum 3 columns  
-- Numeric criteria columns  
+Bar graph:
+- X-axis: Alternatives  
+- Y-axis: TOPSIS Score  
+Highest bar = best choice.
 
 ---
 
-## Output
+## Features
 
-The result file contains:
-- Original data  
-- TOPSIS Score  
-- Rank  
+- CLI with full validation  
+- PyPI package installable via pip  
+- Web service with email result delivery  
+- Supports CSV and Excel  
 
 ---
 
 ## Author
 
 Simran Kaur  
-Assignment: TOPSIS – CLI, Package & Web Service  
 
 ---
 
 ## License
 
-This project is open-source and created for academic learning purposes.
+Open-source, for academic use.
+nd created for academic learning purposes.
