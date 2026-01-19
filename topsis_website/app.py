@@ -18,8 +18,8 @@ ALLOWED_EXTENSIONS = {'csv', 'xlsx', 'xls'}
 # SMTP Configuration (REPLACE THESE WITH YOUR DETAILS)
 SMTP_SERVER = "smtp.gmail.com"
 SMTP_PORT = 465
-GMAIL_USER = "skaur8_be23@thapar.edu"  # Your Gmail address
-GMAIL_APP_PASS = "sifd dhvt ynov rwqt" # Your 16-digit App Password
+GMAIL_USER = ""  # Your Gmail address
+GMAIL_APP_PASS = "" # Your 16-digit App Password
 
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 os.makedirs(OUTPUT_FOLDER, exist_ok=True)
@@ -157,4 +157,5 @@ def index():
     return render_template('index.html')
 
 if __name__ == '__main__':
+
     app.run(debug=True)
